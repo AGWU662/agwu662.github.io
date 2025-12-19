@@ -427,11 +427,32 @@
                 return;
             }
             
+            // Validate email format
+            const email = document.getElementById('email').value;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('❌ Validation Error!\n\nPlease enter a valid email address.');
+                return;
+            }
+            
             // Validate phone number
             const phone = document.getElementById('phone').value;
             const phoneRegex = /^[\+]?[(]?[0-9]{1,4}[)]?[-\s\.]?[(]?[0-9]{1,4}[)]?[-\s\.]?[0-9]{1,9}$/;
             if (!phoneRegex.test(phone)) {
                 alert('❌ Validation Error!\n\nPlease enter a valid phone number.');
+                return;
+            }
+            
+            // Check for duplicate applications (same passport number with pending/approved status)
+            const passportNumber = document.getElementById('passportNumber').value;
+            const existingApps = JSON.parse(localStorage.getItem('visaApplications') || '[]');
+            const duplicateApp = existingApps.find(app => 
+                app.passportNumber === passportNumber && 
+                (app.status === 'Pending' || app.status === 'Approved')
+            );
+            
+            if (duplicateApp) {
+                alert('❌ Duplicate Application!\n\nAn application with this passport number already exists.\n\nBooking Number: ' + duplicateApp.bookingNumber + '\nStatus: ' + duplicateApp.status + '\n\nPlease wait for your current application to be processed.');
                 return;
             }
 

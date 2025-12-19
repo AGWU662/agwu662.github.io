@@ -276,7 +276,7 @@
     </div>
 
     <div class="container">
-        <a href="thailand-visa-portal.html" class="back-link">← Back to Dashboard</a>
+        <a href="user-dashboard.html" class="back-link">← Back to Dashboard</a>
 
         <div class="header">
             <div class="flag"></div>
@@ -500,7 +500,7 @@
                 
                 alert('✅ Payment Successful!\n\nTransaction ID: TXN' + Date.now() + '\nAmount: $40.00 USD\nMethod: Credit/Debit Card\n\nYour receipt has been sent to your email.');
                 
-                window.location.href = 'thailand-visa-portal.html';
+                window.location.href = 'user-dashboard.html';
             }, 2000);
         }
 
@@ -508,7 +508,7 @@
             alert('✅ Payment Confirmation Received!\n\nWe will verify your transaction on the blockchain.\nYou will receive confirmation within 10-30 minutes.\n\nBooking Number: ' + bookingNo);
             
             updatePaymentStatus('Pending Confirmation', 'Cryptocurrency');
-            window.location.href = 'thailand-visa-portal.html';
+            window.location.href = 'user-dashboard.html';
         }
 
         function updatePaymentStatus(status, method) {

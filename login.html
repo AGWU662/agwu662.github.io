@@ -358,6 +358,13 @@
             const password = document.getElementById('password').value;
             const remember = document.getElementById('remember').checked;
             const loginBtn = event.target.querySelector('.btn-login');
+            
+            // Validate email format
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('❌ Please enter a valid email address!');
+                return;
+            }
 
             // Disable button and show loading
             loginBtn.disabled = true;
